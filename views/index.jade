@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    div(ng-controller='AppCtrl').container
+      div.row.clearfix
+         div.col-md-12.column
+             div(ng-view)
+
+    script(src='/javascripts/angular.min.js')
+    script(src='/javascripts/angular-route.min.js')
+    script(src='/javascripts/app.js')
+    script(src='/javascripts/services.js')
+    script(src='/javascripts/controllers.js')
