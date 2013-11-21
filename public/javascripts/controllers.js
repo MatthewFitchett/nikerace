@@ -1,38 +1,18 @@
-function IndexCtrl($scope, $http) {
-    // reset the scope and bind up the handlers..
-    $scope.form = {};
+function SearchController($scope, $location) {
+    $scope.currentToken = $location.search().token;
 
-    $scope.submitToken = function (form) {
-
-        $http.post('/api/token' , form).
-            success(function(data) {
-               // $location.path('/');
-            });
+    $scope.submitToken = function() {
+        $location.search('token', $scope.currentToken);
+        $location.path('/enterrace');
     };
-
-    // here we need to call the entrants API and retrieve all the entrants
-    // then bind them somehow to a collection of data
-    // that somehow angular will bind up to a table
-    $http.get('/api/entrants').
-        success(function(data, status, headers, config) {
-
-            $scope.name = data.name;
-        });
-    console.log($scope);
 }
 
-angular.module('myApp.controllers', []).
-    controller('AppCtrl', function ($scope, $http) {
+function ResultsController($scope, $http, $location) {
+    $scope.entrants = [];
 
-       /* $http({
-            method: 'GET',
-            url: '/api/name'
-        }).
-            success(function (data, status, headers, config) {
-                $scope.name = data.name;
-            }).
-            error(function (data, status, headers, config) {
-                $scope.name = 'Error!'
-            });
-*/
-    });
+    // Populate the entrants from the API
+    $http.get('/api/entrants', {params : {token: $scope.token}}).
+        success(function(data){
+            $scope.entrants = data;
+        });
+}

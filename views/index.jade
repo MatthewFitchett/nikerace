@@ -1,13 +1,19 @@
 extends layout
 
 block content
-    div(ng-controller='AppCtrl').container
+    div.container
       div.row.clearfix
-         div.col-md-12.column
+         div(ng-controller="SearchController").col-md-12.column
+             div.jumbotron
+                h1 Nike+ Racing
+                p Give us your Nike+ details and enter the race!
+                form(ng-submit="submitToken()")
+                    input(ng-model="token", placeholder="Enter your Nike+ API Token here").form-control#nikeToken
+                    button(type="submit").btn.btn-primary.btn-large Join the Race!
              div(ng-view)
 
     script(src='/javascripts/angular.min.js')
     script(src='/javascripts/angular-route.min.js')
-    script(src='/javascripts/app.js')
+    script(src='/javascripts/module.js')
     script(src='/javascripts/services.js')
     script(src='/javascripts/controllers.js')

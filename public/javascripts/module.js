@@ -1,9 +1,9 @@
-angular.module('myApp', ['ngRoute','myApp.services', 'myApp.controllers']).
+angular.module('myApp', ['ngRoute','myApp.services']).
     config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
         $routeProvider.
-            when('/', {
-                templateUrl: 'partials/index',
-                controller: IndexCtrl
+            when('/enterrace', {
+                templateUrl: 'partials/results',
+                controller: ResultsController
             }).
             otherwise({
                 redirectTo: '/'

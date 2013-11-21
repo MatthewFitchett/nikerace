@@ -1,15 +1,11 @@
 
 var Nike=require('node-nike');
 
-exports.name = function (req, res) {
-    res.json({
-        name: 'Bob'
-    });
-};
-
 exports.entrants = function (req, res) {
+    console.log(req.query.token);
     res.json({
-        name: 'Matt'
+        name: 'Matt',
+        token: req.query.token
     });
 };
 

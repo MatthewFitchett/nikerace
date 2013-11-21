@@ -3,10 +3,16 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node module.js"
   },
   "dependencies": {
     "express": "3.4.4",
     "jade": "*"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "karma": "~0.10",
+    "karma-mocha": "~0.1",
+    "karma-chai-plugins": "~0.1.3"
   }
 }
