@@ -2,15 +2,21 @@ extends layout
 
 block content
     div.container
-      div.row.clearfix
-         div(ng-controller="SearchController").col-md-12.column
-             div.jumbotron
-                h1 Nike+ Racing
-                p Give us your Nike+ details and enter the race!
-                form(ng-submit="submitToken()")
-                    input(ng-model="token", placeholder="Enter your Nike+ API Token here").form-control#nikeToken
-                    button(type="submit").btn.btn-primary.btn-large Join the Race!
-             div(ng-view)
+      div.jumbotron.text-center
+        h1
+          span
+            p Nike+ Racing
+        p.fa.fa-lock  Login or Register to take part!
+        p
+          a(href="/login").btn.btn-success
+            span.fa.fa-user   Login
+
+          a(href="/signup").btn.btn-primary.btn-spacer
+            span.fa.fa-user   Signup
+        p
+          a(href="/auth/facebook").btn.btn-primary
+            span.fa.fa-facebook  Facebook
+
 
     script(src='/javascripts/angular.min.js')
     script(src='/javascripts/angular-route.min.js')

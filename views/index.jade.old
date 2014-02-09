@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    div.container
+      div.row.clearfix
+         div(ng-controller="SearchController").col-md-12.column
+             div.jumbotron
+                h1 Nike+ Racing
+                p Give us your Nike+ details and enter the race!
+                form(ng-submit="submitToken()" name="myForm")
+                    input(type="email" ng-model="email", required placeholder="Enter your email address here").form-control#email
+                    input(ng-model="token", required placeholder="Enter your Nike+ API Token here").form-control#nikeToken
+                    button(type="submit").btn.btn-primary.btn-large Join the Race!
+             div(ng-view)
+
+    script(src='/javascripts/angular.min.js')
+    script(src='/javascripts/angular-route.min.js')
+    script(src='/javascripts/module.js')
+    script(src='/javascripts/services.js')
+    script(src='/javascripts/controllers.js')

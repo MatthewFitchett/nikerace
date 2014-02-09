@@ -5,14 +5,23 @@
   "scripts": {
     "start": "node module.js"
   },
-  "dependencies": {
-    "express": "3.4.4",
-    "jade": "*"
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/matthewfitchett/nikerace.git"
   },
-  "devDependencies": {
-    "chai": "*",
-    "karma": "~0.10",
-    "karma-mocha": "~0.1",
-    "karma-chai-plugins": "~0.1.3"
+  "dependencies":{
+    "express": "3.4.4",
+    "jade": "*",
+    "jasmine-node": "~1.11.0",
+    "underscore": "~1.4.2",
+    "node-nike": "*",
+    "mongoose":"~3.8.1",
+    "passport" : "~0.1.17",     
+    "passport-local" : "~0.1.6",  
+    "passport-facebook" : "~1.0.2", 
+    "passport-twitter" : "~1.0.2",  
+    "passport-google-oauth" : "~0.1.5",
+    "connect-flash" : "~0.1.1",   
+    "bcrypt-nodejs" : "latest"
   }
 }

@@ -1,18 +1,17 @@
-function SearchController($scope, $location) {
-    $scope.currentToken = $location.search().token;
+function SearchController($scope, $http, $location) {
 
     $scope.submitToken = function() {
-        $location.search('token', $scope.currentToken);
-        $location.path('/enterrace');
+
+        var token = $scope.token;
+        var email = $scope.email;
+
+        // See if this entrant exists..
+        var entrant = $http.get('api/entrant', {params : {token: token, email: email}}).
+                            success(function(data, status, headers, config){
+                                console.log ("Retrieved : " + data.name);
+                            }).
+                            error(function(data,status, headers,config) {
+                                console.log("WTF! : " + data);
+                            });
     };
-}
-
-function ResultsController($scope, $http, $location) {
-    $scope.entrants = [];
-
-    // Populate the entrants from the API
-    $http.get('/api/entrants', {params : {token: $scope.token}}).
-        success(function(data){
-            $scope.entrants = data;
-        });
 }

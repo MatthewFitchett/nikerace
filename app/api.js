@@ -1,8 +1,8 @@
 
 var Nike=require('node-nike');
 
-exports.entrants = function (req, res) {
-    console.log(req.query.token);
+exports.entrant = function (req, res) {
+    console.log("API - ENTRANT : " + req.query.email + " , with token : " + req.query.token);
     res.json({
         name: 'Matt',
         token: req.query.token
@@ -10,7 +10,7 @@ exports.entrants = function (req, res) {
 };
 
 exports.postToken = function (req, res) {
-    console.log(req.body.apiToken);
+    console.log("POSTTOKEN recvd : " + req.body.apiToken);
 
     var token = req.body.apiToken;
     var nike = new Nike(token);
