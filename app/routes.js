@@ -44,6 +44,16 @@ module.exports = function(app, passport) {
     });
   });
 
+  app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
+  });
+
+  app.get('/partials/:name', function (req, res) {
+    var name = req.params.name;
+    res.render('partials/' + name);
+  });
+
   // =====================================
   // FACEBOOK ROUTES =====================
   // =====================================
@@ -57,15 +67,19 @@ module.exports = function(app, passport) {
       failureRedirect : '/'
     }));
 
-  app.get('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/');
-  });
+  // =====================================
+  // TWITTER ROUTES ======================
+  // =====================================
+  // route for twitter authentication and login
+  app.get('/auth/twitter', passport.authenticate('twitter'));
 
-  app.get('/partials/:name', function (req, res) {
-    var name = req.params.name;
-    res.render('partials/' + name);
-  });
+  // handle the callback after twitter has authenticated the user
+  app.get('/auth/twitter/callback',
+    passport.authenticate('twitter', {
+      successRedirect : '/profile',
+      failureRedirect : '/'
+    }));
+
 
   // route middleware to make sure a user is logged in
   function isLoggedIn(req, res, next) {
