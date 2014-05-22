@@ -2,8 +2,6 @@ var api = require('./api');
 
 module.exports = function(app, passport) {
   app.get('/', function(req, res){
-
-    console.log("fddsfadsfasdfasdfasdfasdfadf");
     res.render('index', { title: 'The Nike+ race ...' });
   });
 

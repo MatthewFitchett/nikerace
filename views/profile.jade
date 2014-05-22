@@ -2,31 +2,49 @@ extends layout
 
 block content
     div.container
-      div.page-header.text-center
-        h1
-          span.fa.fa-anchor    Profile page
-        a(href="/logout").btn.btn-default.btn-sm Logout
 
-      div.row
-        div.col-sm-6
-          div.well
-            h3.text-primary
-              span.fa.fa-user   Local user information
-            p User Id:   #{user._id}
-            p Email : #{user.local.email}
+      a(href="/logout").btn.btn-default.btn-sm.pull-right Logout
 
-        div.col-sm-6
-          div.well
-            h3.text-primary
-              span.fa.fa-facebook   Facebook
-            p Facebook Id: #{user.facebook.id}
-            p Email: #{user.facebook.email}
-            p Name: #{user.facebook.name}
+      <!-- Nav tabs -->
+      ul.nav.nav-tabs
+        li.active
+          a(href="#home" data-toggle="tab") Home
+        li
+          a(href="#devices" data-toggle="tab") Your devices
+        li
+          a(href="#profile" data-toggle="tab") Profile
 
-        div.col-sm-6
-          div.well
-            h3.text-primary
-              span.fa.fa-twitter   Twitter
-            p Twitter Id: #{user.twitter.id}
-            p User Name: #{user.twitter.username}
-            p Display Name: #{user.twitter.displayName}
+      <!-- Tab panes -->
+      div.tab-content
+        div#home.tab-pane.active
+          p
+            Some home content here...
+        
+        div#devices.tab-pane
+          p
+            Some devices content here...
+
+        div#profile.tab-pane
+          div.row
+            div.col-sm-6
+              div.well
+                h3.text-primary
+                  span.fa.fa-user   Local user information
+                p User Id:   #{user._id}
+                p Email : #{user.local.email}
+
+          div.col-sm-6
+            div.well
+              h3.text-primary
+                span.fa.fa-facebook   Facebook
+              p Facebook Id: #{user.facebook.id}
+              p Email: #{user.facebook.email}
+              p Name: #{user.facebook.name}
+
+          div.col-sm-6
+            div.well
+              h3.text-primary
+                span.fa.fa-twitter   Twitter
+              p Twitter Id: #{user.twitter.id}
+              p User Name: #{user.twitter.username}
+              p Display Name: #{user.twitter.displayName}
